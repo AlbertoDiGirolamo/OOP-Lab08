@@ -5,10 +5,16 @@ import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Random;
 
+import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -44,6 +50,15 @@ public class BadIOGUI {
         /*
          * Handlers
          */
+        final JPanel myPanel = new JPanel();
+        canvas.add(myPanel);
+        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.X_AXIS));
+        myPanel.add(write, BorderLayout.CENTER);
+
+        final JButton read = new JButton("Read on file");
+        myPanel.add(read);
+
+
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
@@ -59,6 +74,21 @@ public class BadIOGUI {
                 } catch (FileNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace();
+                }
+            }
+        });
+        read.addActionListener(new ActionListener() {
+            public void actionPerformed(final ActionEvent e) {
+                
+                //try (InputStream is = new FileInputStream(PATH)){
+                try {
+                    System.out.println(Files.readAllLines(Paths.get(PATH)));
+                    
+                } catch (FileNotFoundException e1) {
+                    JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
+                    e1.printStackTrace();
+                } catch (IOException e2) {
+                    System.out.println(e2.toString());
                 }
             }
         });
@@ -87,6 +117,7 @@ public class BadIOGUI {
          * OK, ready to pull the frame onscreen
          */
         frame.setVisible(true);
+        frame.pack();
     }
 
     /**
