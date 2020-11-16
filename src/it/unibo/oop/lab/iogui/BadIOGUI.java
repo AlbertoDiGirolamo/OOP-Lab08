@@ -79,11 +79,9 @@ public class BadIOGUI {
         });
         read.addActionListener(new ActionListener() {
             public void actionPerformed(final ActionEvent e) {
-                
                 //try (InputStream is = new FileInputStream(PATH)){
                 try {
                     System.out.println(Files.readAllLines(Paths.get(PATH)));
-                    
                 } catch (FileNotFoundException e1) {
                     JOptionPane.showMessageDialog(frame, e1, "Error", JOptionPane.ERROR_MESSAGE);
                     e1.printStackTrace();
