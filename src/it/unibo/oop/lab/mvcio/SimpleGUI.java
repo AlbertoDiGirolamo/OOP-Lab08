@@ -8,9 +8,11 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 //import com.sun.tools.javac.util.Assert;
 
@@ -98,6 +100,28 @@ public final class SimpleGUI extends Controller{
             }
             }
         });
+        ////////////////// esercizio mvcio2
+        final JPanel canvas2 = new JPanel();
+
+        canvas.add(canvas2, BorderLayout.NORTH);
+        canvas2.setLayout(new BorderLayout());
+        final JTextField textMessage = new JTextField("MESSAGGIO");
+        textMessage.setEditable(false);
+        
+        canvas2.add(textMessage, BorderLayout.CENTER);
+        final JButton browse = new JButton("Browse...");
+        canvas2.add(browse, BorderLayout.LINE_END);
+        
+        browse.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChoos = new JFileChooser();
+                fileChoos.showSaveDialog(fileChoos.getParent());
+               
+            }
+        });
+        
+        //////////////////
         frame.pack();
     }
 

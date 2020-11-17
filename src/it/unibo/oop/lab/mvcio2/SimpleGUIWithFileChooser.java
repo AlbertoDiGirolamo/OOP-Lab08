@@ -1,5 +1,7 @@
 package it.unibo.oop.lab.mvcio2;
 
+//import it.unibo.oop.lab.mvcio.JTextF;
+
 /**
  * A very simple program using a graphical interface.
  * 
@@ -31,5 +33,8 @@ public final class SimpleGUIWithFileChooser {
      * update the UI: in this example the UI knows when should be updated, so
      * try to keep things separated.
      */
-
+    //////////////////  mvcio2
+  
+    
+    //////////////////
 }
