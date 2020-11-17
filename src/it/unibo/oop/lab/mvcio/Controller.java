@@ -1,10 +1,21 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.io.File;
+
 /**
  * 
  */
-public class Controller {
-
+public class Controller{
+    
+    
+    private File currentFile;
+    public File current(File nameFile) {
+        currentFile = new
+    }
+    
+    public getFile() {
+        return current()
+    }
     /*
      * This class must implement a simple controller responsible of I/O access. It
      * considers a single file at a time, and it is able to serialize objects in it.
