@@ -1,20 +1,71 @@
 package it.unibo.oop.lab.mvcio;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 
 /**
  * 
  */
 public class Controller{
     
+
+    private File currentFile = null;
+    private String path = System.getProperty("user.home")
+            + System.getProperty("file.separator")
+            + "output.txt" ;
     
-    private File currentFile;
-    public File current(File nameFile) {
-        currentFile = new
+    
+    
+    
+    public Controller() {
+        current();
+        
     }
     
-    public getFile() {
-        return current()
+    
+    public void current() {
+        String nameFile = path;
+        try {
+            File file = new File(nameFile);
+            if (file.exists()) {
+                System.out.println("Il file " + nameFile + " esiste");
+                currentFile = file; 
+            }
+                else if (file.createNewFile()) { 
+                    System.out.println("Il file " + nameFile + " è stato creato");
+                    currentFile = file; 
+                }               
+                //System.out.println("Il file " + nameFile + " non può essere creato");
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+                
+        }
+        
+    }
+    
+    
+    public File getFile() {
+        return currentFile;
+    }
+    
+    public void setPath(String toPath) {
+        this.path = toPath;
+    }
+    
+    public void insertString(String s) throws IOException {
+        current();
+        try {
+            FileWriter fw = new FileWriter(getFile());
+            BufferedWriter bw = new BufferedWriter(fw);
+            bw.write(s);
+            bw.flush();
+            bw.close();
+        } catch(IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
     /*
      * This class must implement a simple controller responsible of I/O access. It
