@@ -10,6 +10,7 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -117,8 +118,17 @@ public final class SimpleGUI extends Controller{
             public void actionPerformed(ActionEvent e) {
                 JFileChooser fileChoos = new JFileChooser();
                 fileChoos.showSaveDialog(fileChoos.getParent());
-               
-            }
+                if(fileChoos.APPROVE_OPTION == 0){
+                    setPath(fileChoos.getSelectedFile().getName());
+                    textMessage.setText(getFile().getPath()); 
+                }
+                else if(fileChoos.CANCEL_OPTION == 1) {
+                    return;
+                }
+                else {
+                    JOptionPane.showMessageDialog(frame, "information","information", JOptionPane.ERROR_MESSAGE);
+                }
+            }       
         });
         
         //////////////////
