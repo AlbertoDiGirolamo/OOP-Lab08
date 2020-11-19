@@ -45,7 +45,9 @@ public class Controller{
         }
         
     }
-    
+    public String getPathFile() {
+        return this.path;
+    }
     
     public File getFile() {
         return currentFile;

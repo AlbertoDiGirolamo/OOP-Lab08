@@ -77,7 +77,7 @@ public final class SimpleGUI extends Controller{
         
         
         
-        frame.setVisible(true);
+       // frame.setVisible(true);
        
         
         final JPanel canvas = new JPanel();
@@ -101,38 +101,10 @@ public final class SimpleGUI extends Controller{
             }
             }
         });
-        ////////////////// esercizio mvcio2
-        final JPanel canvas2 = new JPanel();
-
-        canvas.add(canvas2, BorderLayout.NORTH);
-        canvas2.setLayout(new BorderLayout());
-        final JTextField textMessage = new JTextField("MESSAGGIO");
-        textMessage.setEditable(false);
-        
-        canvas2.add(textMessage, BorderLayout.CENTER);
-        final JButton browse = new JButton("Browse...");
-        canvas2.add(browse, BorderLayout.LINE_END);
-        
-        browse.addActionListener(new ActionListener() {
-            
-            public void actionPerformed(ActionEvent e) {
-                JFileChooser fileChoos = new JFileChooser();
-                fileChoos.showSaveDialog(fileChoos.getParent());
-                if(fileChoos.APPROVE_OPTION == 0){
-                    setPath(fileChoos.getSelectedFile().getName());
-                    textMessage.setText(getFile().getPath()); 
-                }
-                else if(fileChoos.CANCEL_OPTION == 1) {
-                    return;
-                }
-                else {
-                    JOptionPane.showMessageDialog(frame, "information","information", JOptionPane.ERROR_MESSAGE);
-                }
-            }       
-        });
+        frame.setVisible(true);
         
         //////////////////
-        frame.pack();
+        //frame.pack();
     }
 
 }
